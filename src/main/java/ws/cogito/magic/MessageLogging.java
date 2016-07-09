@@ -30,6 +30,22 @@ public interface MessageLogging {
 			logger.info("Generated Tracking ID: " + trackingId + "=" + tid + " ");
 		}
 		
+		//log the correlation ID if it exists
+		if (message.getMessageProperties().getCorrelationId() != null) {
+			
+			try {
+			
+				String correlationId = new String(message.getMessageProperties().
+						getCorrelationId(), "UTF-8");
+				
+				logger.info("Message Correlation ID: " + correlationId);
+			
+			} catch (UnsupportedEncodingException e) {
+				logger.error("Unable to process correlation identifer \n" + e.getMessage());
+			}
+		}
+		
+		//log the message body
 		String body = null;
 		
 		try {

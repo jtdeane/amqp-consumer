@@ -25,6 +25,22 @@ public final class AmqpConsumerProperties {
 	private String ordersQueueBinding;
 	private String eventsQueueBinding;
 	
+	//routing
+	private String priorityRoutingKey;
+	private String vipRoutingKey;
+
+	public String getVipRoutingKey() {
+		return vipRoutingKey;
+	}
+	public void setVipRoutingKey(String vipRoutingKey) {
+		this.vipRoutingKey = vipRoutingKey;
+	}
+	public String getPriorityRoutingKey() {
+		return priorityRoutingKey;
+	}
+	public void setPriorityRoutingKey(String priorityRoutingKey) {
+		this.priorityRoutingKey = priorityRoutingKey;
+	}
 	public String getHost() {
 		return host;
 	}
