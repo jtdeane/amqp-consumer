@@ -72,6 +72,7 @@ public class PriorityController {
 		
 		logger.info("Processing VIP Message...");
 		
+		//not replyTo to magic.sales.orders
 		Message orderMessage = MessageBuilder.withBody(payload.getBytes())
 				.setContentType(MessageProperties.CONTENT_TYPE_JSON)
 				.setContentEncoding(StandardCharsets.UTF_8.name())
