@@ -31,18 +31,9 @@ public interface MessageLogging {
 		}
 		
 		//log the correlation ID if it exists
-		if (message.getMessageProperties().getCorrelationId() != null) {
-			
-			try {
-			
-				String correlationId = new String(message.getMessageProperties().
-						getCorrelationId(), "UTF-8");
-				
-				logger.info("Message Correlation ID: " + correlationId);
-			
-			} catch (UnsupportedEncodingException e) {
-				logger.error("Unable to process correlation identifer \n" + e.getMessage());
-			}
+        String correlationId = message.getMessageProperties().getCorrelationIdString();
+        if (correlationId != null) {
+		    logger.info("Message Correlation ID: " + correlationId);
 		}
 		
 		//log the message body
