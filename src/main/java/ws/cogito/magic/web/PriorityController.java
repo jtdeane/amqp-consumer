@@ -76,7 +76,7 @@ public class PriorityController {
 		Message orderMessage = MessageBuilder.withBody(payload.getBytes())
 				.setContentType(MessageProperties.CONTENT_TYPE_JSON)
 				.setContentEncoding(StandardCharsets.UTF_8.name())
-				.setCorrelationId(UUID.randomUUID().toString().getBytes())
+				.setCorrelationIdString(UUID.randomUUID().toString())
 				.setReplyTo(properties.getVipRoutingKey())
 				.setHeader(TRACKING_ID, response.getHeader(TRACKING_ID))
 				.build();
