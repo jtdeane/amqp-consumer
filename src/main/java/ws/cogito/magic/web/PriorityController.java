@@ -72,11 +72,13 @@ public class PriorityController {
 		
 		logger.info("Processing VIP Message...");
 		
+		String guid = UUID.randomUUID().toString();
+		
 		//not replyTo to magic.sales.orders
 		Message orderMessage = MessageBuilder.withBody(payload.getBytes())
 				.setContentType(MessageProperties.CONTENT_TYPE_JSON)
 				.setContentEncoding(StandardCharsets.UTF_8.name())
-				.setCorrelationIdString(UUID.randomUUID().toString())
+				.setCorrelationId(guid.getBytes())
 				.setReplyTo(properties.getVipRoutingKey())
 				.setHeader(TRACKING_ID, response.getHeader(TRACKING_ID))
 				.build();

@@ -31,9 +31,10 @@ public interface MessageLogging {
 		}
 		
 		//log the correlation ID if it exists
-        String correlationId = message.getMessageProperties().getCorrelationIdString();
+		
+        byte[] correlationId = message.getMessageProperties().getCorrelationId();
         if (correlationId != null) {
-		    logger.info("Message Correlation ID: " + correlationId);
+		    logger.info("Message Correlation ID: " + new String(correlationId, StandardCharsets.UTF_8));
 		}
 		
 		//log the message body
