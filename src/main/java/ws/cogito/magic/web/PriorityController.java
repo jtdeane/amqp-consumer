@@ -57,7 +57,7 @@ public class PriorityController {
 		
 		orderConfirmation = new String(confirmationMessage.getBody(), StandardCharsets.UTF_8.name());
 		
-		logger.info("Processed and Returning Message");
+		logger.info("Processed and Returned Message");
 		
 		return orderConfirmation;
 	}
@@ -78,7 +78,7 @@ public class PriorityController {
 		Message orderMessage = MessageBuilder.withBody(payload.getBytes())
 				.setContentType(MessageProperties.CONTENT_TYPE_JSON)
 				.setContentEncoding(StandardCharsets.UTF_8.name())
-				.setCorrelationId(guid.getBytes())
+				.setCorrelationId(guid)
 				.setReplyTo(properties.getVipRoutingKey())
 				.setHeader(TRACKING_ID, response.getHeader(TRACKING_ID))
 				.build();
